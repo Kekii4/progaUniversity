@@ -8,10 +8,10 @@ int main(){
     printf("hello world!\n");
 
     int arr[SIZE_LINE][SIZE_ROW] = {{1, 0, 0, 0, 0, 0},
-                                    {1, 0, 0, 1, 1, 0},
-                                    {0, 0, 0, 1, 1, 0},
-                                    {0, 0, 0, 0, 0, 1},
-                                    {0, 0, 0, 0, 0, 1}};
+                                    {1, 0, 1, 1, 1, 0},
+                                    {0, 0, 1, 0, 1, 0},
+                                    {0, 0, 1, 1, 1, 0},
+                                    {0, 0, 0, 0, 0, 0}};
     int amountOfSquare = 0;
 
     int relativeWidth = 0;
@@ -40,6 +40,7 @@ int main(){
                     relativeWidth = i + 1;
                     relativeLength = j + 1;
 
+
                     while (arr[relativeWidth][j] == 1){
                         if (arr[relativeWidth][j-1] == 1){
                             boolFlag = 1;
@@ -51,8 +52,6 @@ int main(){
                         continue;
                     }                   
                    
-                    // realWidth = relativeWidth - i;
-
                     while (arr[i][relativeLength] == 1){
                         if (arr[i-1][relativeLength] == 1){
                             boolFlag = 1;
@@ -64,11 +63,11 @@ int main(){
                         continue;
                     }
 
+
                     if (arr[relativeWidth][relativeLength] == 1){
                         continue;
                     }
 
-                    // realLength = relativeLength - j;
 
                     for (int onWidth = i; onWidth < relativeWidth; onWidth++){
                         for (int onLength = j; onLength < relativeLength; onLength++){
@@ -76,20 +75,6 @@ int main(){
                                 boolFlag = 1;
                                 break;
                             }
-
-                            // if (relativeLength - onLength == 1){
-                            //     if (arr[onWidth][relativeLength] == 1){
-                            //         boolFlag = 1;
-                            //         break;
-                            //     }
-                            // }
-
-                            // if (relativeWidth - onWidth == 1){
-                            //     if (arr[relativeWidth][onLength] == 1){
-                            //         boolFlag = 1;
-                            //         break;
-                            //     }
-                            // }
 
                             if (arr[onWidth][relativeLength] == 1){
                                 boolFlag = 1;
@@ -108,6 +93,7 @@ int main(){
 
                     }
 
+
                     if (!boolFlag){
                         amountOfSquare++;
                     }
@@ -117,12 +103,7 @@ int main(){
         }
     }
 
-
-    // printf("real width = %d, real Length = %d\n", realWidth, realLength);
-    // printf("relative width = %d, relative length = %d\n", relativeWidth, relativeLength);
-
     printf("amount = %d\n", amountOfSquare);
-
 
     return 0;
 }
