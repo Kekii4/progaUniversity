@@ -1,6 +1,5 @@
 #include <stdio.h>
 
-
 const int SIZE_LINE = 5;
 const int SIZE_ROW = 6;
 
@@ -10,7 +9,7 @@ int main(){
 
     int arr[SIZE_LINE][SIZE_ROW] = {{1, 0, 0, 0, 0, 0},
                                     {1, 0, 1, 1, 1, 0},
-                                    {0, 0, 1, 0, 1, 0},
+                                    {0, 0, 1, 1, 1, 0},
                                     {0, 0, 1, 1, 1, 0},
                                     {0, 0, 0, 0, 0, 0}};
     int numberOfRectangles = 0;
@@ -67,18 +66,16 @@ int main(){
                         continue;
                     }
 
-                    for (int byWidth = i; byWidth < relativeWidth; byWidth++){
-                        for (int byLength = j; byLength < relativeLength; byLength++){
+                    for (int byWidth = i + 1; byWidth < relativeWidth; byWidth++){
+                        for (int byLength = j + 1; byLength < relativeLength; byLength++){
                             if (arr[byWidth][byLength] != 1){
                                 boolFlag = 1;
                                 break;
                             }
-
                             if (arr[byWidth][relativeLength] == 1){
                                 boolFlag = 1;
                                 break;
                             }
-
                             if (arr[relativeWidth][byLength] == 1){
                                 boolFlag = 1;
                                 break;
