@@ -1,5 +1,6 @@
 #include <stdio.h>
 
+
 const int SIZE_LINE = 5;
 const int SIZE_ROW = 6;
 
@@ -12,7 +13,7 @@ int main(){
                                     {0, 0, 1, 0, 1, 0},
                                     {0, 0, 1, 1, 1, 0},
                                     {0, 0, 0, 0, 0, 0}};
-    int amountOfSquare = 0;
+    int numberOfRectangles = 0;
 
     int relativeWidth = 0;
     int relativeLength = 0;
@@ -33,13 +34,12 @@ int main(){
         for (int j = 0; j < SIZE_ROW; j++){
             
             boolFlag = 0;
-
+            
             if (arr[i][j]){
                 if (arr[i-1][j] != 1 && arr[i-1][j-1] != 1 && arr[i][j-1] != 1){
 
                     relativeWidth = i + 1;
                     relativeLength = j + 1;
-
 
                     while (arr[relativeWidth][j] == 1){
                         if (arr[relativeWidth][j-1] == 1){
@@ -51,7 +51,7 @@ int main(){
                     if (boolFlag){
                         continue;
                     }                   
-                   
+                    
                     while (arr[i][relativeLength] == 1){
                         if (arr[i-1][relativeLength] == 1){
                             boolFlag = 1;
@@ -63,47 +63,41 @@ int main(){
                         continue;
                     }
 
-
                     if (arr[relativeWidth][relativeLength] == 1){
                         continue;
                     }
 
-
-                    for (int onWidth = i; onWidth < relativeWidth; onWidth++){
-                        for (int onLength = j; onLength < relativeLength; onLength++){
-                            if (arr[onWidth][onLength] != 1){
+                    for (int byWidth = i; byWidth < relativeWidth; byWidth++){
+                        for (int byLength = j; byLength < relativeLength; byLength++){
+                            if (arr[byWidth][byLength] != 1){
                                 boolFlag = 1;
                                 break;
                             }
 
-                            if (arr[onWidth][relativeLength] == 1){
+                            if (arr[byWidth][relativeLength] == 1){
                                 boolFlag = 1;
                                 break;
                             }
 
-                            if (arr[relativeWidth][onLength] == 1){
+                            if (arr[relativeWidth][byLength] == 1){
                                 boolFlag = 1;
                                 break;
-                            }
-                            
+                            }    
                         }
                         if (boolFlag){
                             break;
                         }
-
                     }
-
 
                     if (!boolFlag){
-                        amountOfSquare++;
+                        numberOfRectangles++;
                     }
-                    
                 }
             }
         }
     }
 
-    printf("amount = %d\n", amountOfSquare);
+    printf("amount = %d\n", numberOfRectangles);
 
     return 0;
 }
