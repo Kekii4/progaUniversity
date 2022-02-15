@@ -5,20 +5,15 @@ const int SIZE_ROW = 6;
 
 int main(){
 
-    printf("hello world!\n");
-
     int arr[SIZE_LINE][SIZE_ROW] = {{1, 0, 0, 0, 0, 0},
-                                    {1, 0, 1, 1, 1, 0},
-                                    {0, 0, 1, 1, 1, 0},
-                                    {0, 0, 1, 1, 1, 0},
-                                    {0, 0, 0, 0, 0, 0}};
-    int numberOfRectangles = 0;
+                                    {0, 1, 1, 1, 1, 0},
+                                    {0, 1, 1, 1, 1, 0},
+                                    {0, 1, 1, 1, 1, 0},
+                                    {0, 0, 0, 1, 0, 0}};
+    int numberRectangles = 0;
 
     int relativeWidth = 0;
     int relativeLength = 0;
-
-    // int realWidth = 0;
-    // int realLength = 0;
 
     int boolFlag;
 
@@ -67,16 +62,17 @@ int main(){
                     }
 
                     for (int byWidth = i + 1; byWidth < relativeWidth; byWidth++){
+                        if (arr[byWidth][relativeLength] == 1){
+                            boolFlag = 1;
+                            break;
+                        }
+
                         for (int byLength = j + 1; byLength < relativeLength; byLength++){
                             if (arr[byWidth][byLength] != 1){
                                 boolFlag = 1;
                                 break;
                             }
-                            if (arr[byWidth][relativeLength] == 1){
-                                boolFlag = 1;
-                                break;
-                            }
-                            if (arr[relativeWidth][byLength] == 1){
+                            if (byWidth == i + 1 && arr[relativeWidth][byLength] == 1){
                                 boolFlag = 1;
                                 break;
                             }    
@@ -87,14 +83,14 @@ int main(){
                     }
 
                     if (!boolFlag){
-                        numberOfRectangles++;
+                        numberRectangles++;
                     }
                 }
             }
         }
     }
 
-    printf("amount = %d\n", numberOfRectangles);
+    printf("amount = %d\n", numberRectangles);
 
     return 0;
 }
