@@ -12,6 +12,7 @@ int main(){
                                     {0, 0, 0, 1, 0, 0}};
     int numberRectangles = 0;
 
+
     int relativeWidth = 0;
     int relativeLength = 0;
 
