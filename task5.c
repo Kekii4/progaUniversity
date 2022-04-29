@@ -12,8 +12,8 @@ int main(){
                                     {0, 0, 0, 1, 0, 0}};
     int numberRectangles = 0;
 
-    int relativeWidth = 0;
-    int relativeLength = 0;
+    int Width = 0;
+    int Length = 0;
 
     int boolFlag;
 
@@ -32,47 +32,47 @@ int main(){
             if (arr[i][j]){
                 if (arr[i-1][j] != 1 && arr[i-1][j-1] != 1 && arr[i][j-1] != 1){
 
-                    relativeWidth = i + 1;
-                    relativeLength = j + 1;
+                    Width = i + 1;
+                    Length = j + 1;
 
-                    while (arr[relativeWidth][j] == 1){
-                        if (arr[relativeWidth][j-1] == 1){
+                    while (arr[Width][j] == 1){
+                        if (arr[Width][j-1] == 1){
                             boolFlag = 1;
                             break;
                         }
-                        relativeWidth++;
+                        Width++;
                     }
                     if (boolFlag){
                         continue;
                     }                   
                     
-                    while (arr[i][relativeLength] == 1){
-                        if (arr[i-1][relativeLength] == 1){
+                    while (arr[i][Length] == 1){
+                        if (arr[i-1][Length] == 1){
                             boolFlag = 1;
                             break;
                         }
-                        relativeLength++;
+                        Length++;
                     }
                     if (boolFlag){
                         continue;
                     }
 
-                    if (arr[relativeWidth][relativeLength] == 1){
+                    if (arr[Width][Length] == 1){
                         continue;
                     }
 
-                    for (int byWidth = i + 1; byWidth < relativeWidth; byWidth++){
-                        if (arr[byWidth][relativeLength] == 1){
+                    for (int byWidth = i + 1; byWidth < Width; byWidth++){
+                        if (arr[byWidth][Length] == 1){
                             boolFlag = 1;
                             break;
                         }
 
-                        for (int byLength = j + 1; byLength < relativeLength; byLength++){
+                        for (int byLength = j + 1; byLength < Length; byLength++){
                             if (arr[byWidth][byLength] != 1){
                                 boolFlag = 1;
                                 break;
                             }
-                            if (byWidth == i + 1 && arr[relativeWidth][byLength] == 1){
+                            if (byWidth == i + 1 && arr[Width][byLength] == 1){
                                 boolFlag = 1;
                                 break;
                             }    
